@@ -71,11 +71,19 @@ namespace Unit05.Game.Scripting
                 {
                     _isGameOver = true;
                 }
+                else if (segment.GetPosition().Equals(head2.GetPosition()))
+                {
+                    _isGameOver = true;
+                }
             }
 
             foreach (Actor segment2 in body2)
             {
                 if (segment2.GetPosition().Equals(head2.GetPosition()))
+                {
+                    _isGameOver = true;
+                }
+                else if (segment2.GetPosition().Equals(head.GetPosition()))
                 {
                     _isGameOver = true;
                 }
