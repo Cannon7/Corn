@@ -43,9 +43,12 @@ namespace Unit05.Game.Scripting
         private void TailGrowth(Cast cast)
         {
             Snake snake = (Snake)cast.GetFirstActor("p1");
+            Snake snake2 = (Snake)cast.GetFirstActor("p2");
             Score score = (Score)cast.GetFirstActor("score");
             Food food = (Food)cast.GetFirstActor("food");
             snake.GrowTail(1);
+            snake2.GrowTail(1);
+
                 
         }
 
@@ -56,12 +59,23 @@ namespace Unit05.Game.Scripting
         private void HandleSegmentCollisions(Cast cast)
         {
             Snake snake = (Snake)cast.GetFirstActor("p1");
+            Snake snake2 = (Snake)cast.GetFirstActor("p2");
             Actor head = snake.GetHead();
+            Actor head2 = snake2.GetHead();
             List<Actor> body = snake.GetBody();
+            List<Actor> body2 = snake2.GetBody();
 
             foreach (Actor segment in body)
             {
                 if (segment.GetPosition().Equals(head.GetPosition()))
+                {
+                    _isGameOver = true;
+                }
+            }
+
+            foreach (Actor segment2 in body2)
+            {
+                if (segment2.GetPosition().Equals(head2.GetPosition()))
                 {
                     _isGameOver = true;
                 }
