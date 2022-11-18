@@ -89,13 +89,15 @@ namespace Unit05.Game.Scripting
                 }
             }
         }
-
+        
         private void HandleGameOver(Cast cast)
         {
             if (_isGameOver == true)
             {
                 Snake snake = (Snake)cast.GetFirstActor("p1");
+                Snake snake2 = (Snake)cast.GetFirstActor("p2");
                 List<Actor> segments = snake.GetSegments();
+                List<Actor> segments2 = snake2.GetSegments();
                 Food food = (Food)cast.GetFirstActor("food");
 
                 // create a "game over" message
@@ -112,6 +114,10 @@ namespace Unit05.Game.Scripting
                 foreach (Actor segment in segments)
                 {
                     segment.SetColor(Constants.WHITE);
+                }
+                foreach (Actor segment2 in segments2)
+                {
+                    segment2.SetColor(Constants.WHITE);
                 }
                 food.SetColor(Constants.WHITE);
             }
